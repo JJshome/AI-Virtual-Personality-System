@@ -1,0 +1,5 @@
+# Requirements for the ethics and security module
+pyyaml>=6.0
+cryptography>=39.0.0
+requests>=2.28.0
+python-dotenv>=1.0.0
