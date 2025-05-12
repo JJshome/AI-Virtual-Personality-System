@@ -1,185 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f39c12;stop-opacity:1" />
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
-    </filter>
-    <style type="text/css">
-      @keyframes pulse {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.05); opacity: 0.9; }
-        100% { transform: scale(1); opacity: 1; }
-      }
-      @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes expand {
-        0% { transform: scale(0.1); }
-        70% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-      }
-      @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-      }
-      .pulse { animation: pulse 4s infinite ease-in-out; }
-      .rotate { animation: rotate 20s infinite linear; }
-      .fadeIn { animation: fadeIn 2s; }
-      .expand { animation: expand 1s; }
-      .float { animation: float 6s infinite ease-in-out; }
-      .delayed1 { animation-delay: 0.2s; }
-      .delayed2 { animation-delay: 0.4s; }
-      .delayed3 { animation-delay: 0.6s; }
-      .delayed4 { animation-delay: 0.8s; }
-      .delayed5 { animation-delay: 1s; }
-    </style>
-    
-    <!-- Entertainment Icon -->
-    <symbol id="entertainment-icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="#e74c3c"/>
-      <text x="50" y="45" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="bold">ENTERTAINMENT</text>
-      <path d="M30,65 L45,55 L45,75 L30,65 Z" fill="white"/>
-      <circle cx="60" cy="65" r="10" fill="none" stroke="white" stroke-width="3"/>
-      <line x1="67" y1="72" x2="75" y2="80" stroke="white" stroke-width="3"/>
-    </symbol>
-    
-    <!-- Education Icon -->
-    <symbol id="education-icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="#3498db"/>
-      <text x="50" y="40" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="bold">EDUCATION</text>
-      <path d="M25,60 L75,60 L75,70 L25,70 Z" fill="white"/>
-      <path d="M30,55 L70,55 L70,60 L30,60 Z" fill="white"/>
-      <path d="M35,50 L65,50 L65,55 L35,55 Z" fill="white"/>
-      <path d="M40,45 L60,45 L60,50 L40,50 Z" fill="white"/>
-      <path d="M45,40 L55,40 L55,45 L45,45 Z" fill="white"/>
-      <path d="M50,30 L50,40" stroke="white" stroke-width="3"/>
-    </symbol>
-    
-    <!-- Healthcare Icon -->
-    <symbol id="healthcare-icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="#2ecc71"/>
-      <text x="50" y="40" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="bold">HEALTHCARE</text>
-      <rect x="35" y="45" width="30" height="30" fill="white"/>
-      <rect x="45" y="35" width="10" height="50" fill="white"/>
-    </symbol>
-    
-    <!-- Customer Service Icon -->
-    <symbol id="customer-service-icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="#9b59b6"/>
-      <text x="50" y="35" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">CUSTOMER</text>
-      <text x="50" y="45" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">SERVICE</text>
-      <path d="M35,70 C35,55 65,55 65,70" fill="none" stroke="white" stroke-width="3"/>
-      <circle cx="50" cy="65" r="15" fill="none" stroke="white" stroke-width="3"/>
-      <circle cx="40" cy="60" r="2" fill="white"/>
-      <circle cx="60" cy="60" r="2" fill="white"/>
-    </symbol>
-    
-    <!-- Financial Services Icon -->
-    <symbol id="financial-icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="#f39c12"/>
-      <text x="50" y="35" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">FINANCIAL</text>
-      <text x="50" y="45" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">SERVICES</text>
-      <text x="50" y="70" font-family="Arial" font-size="24" fill="white" text-anchor="middle" font-weight="bold">$</text>
-      <circle cx="50" cy="60" r="15" fill="none" stroke="white" stroke-width="3"/>
-    </symbol>
-    
-    <!-- Tourism Icon -->
-    <symbol id="tourism-icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="#1abc9c"/>
-      <text x="50" y="40" font-family="Arial" font-size="12" fill="white" text-anchor="middle" font-weight="bold">TOURISM</text>
-      <path d="M50,45 L30,70 L70,70 Z" fill="white"/>
-      <circle cx="50" cy="60" r="5" fill="none" stroke="white" stroke-width="2"/>
-    </symbol>
-  </defs>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="white"/>
   
-  <!-- Background -->
-  <rect width="800" height="600" fill="#f8f9fa" rx="10" ry="10"/>
-  <rect width="780" height="50" x="10" y="10" fill="url(#headerGradient)" rx="8" ry="8"/>
-  <text x="400" y="45" font-family="Arial" font-size="24" fill="white" text-anchor="middle" font-weight="bold">Application Domains</text>
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Application Domains</text>
   
-  <!-- Center Circle with Virtual Personality -->
-  <circle cx="400" cy="300" r="80" fill="#34495e" class="pulse" filter="url(#shadow)"/>
-  <text x="400" y="290" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Virtual</text>
-  <text x="400" y="310" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Personality</text>
-  <circle cx="400" cy="300" r="100" fill="none" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="rotate"/>
-  
-  <!-- Application Domains -->
   <!-- Entertainment -->
-  <g class="expand delayed1 float" transform="translate(400, 100) scale(0.8)">
-    <use href="#entertainment-icon" width="100" height="100"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#e74c3c" text-anchor="middle" font-weight="bold">Virtual Celebrities</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#e74c3c" text-anchor="middle" font-weight="bold">Game Characters</text>
-  </g>
+  <rect x="50" y="60" width="160" height="140" rx="5" fill="#E1F5FE" stroke="#0288D1" stroke-width="2"/>
+  <text x="130" y="85" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Entertainment</text>
+  <text x="130" y="115" font-family="Arial" font-size="12" text-anchor="middle">• Virtual Celebrities</text>
+  <text x="130" y="140" font-family="Arial" font-size="12" text-anchor="middle">• Game Characters</text>
+  <text x="130" y="165" font-family="Arial" font-size="12" text-anchor="middle">• Fan Engagement</text>
   
   <!-- Education -->
-  <g class="expand delayed2 float" transform="translate(200, 170) scale(0.8)">
-    <use href="#education-icon" width="100" height="100"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#3498db" text-anchor="middle" font-weight="bold">Virtual Teachers</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#3498db" text-anchor="middle" font-weight="bold">Historical Figures</text>
-  </g>
+  <rect x="230" y="60" width="160" height="140" rx="5" fill="#E8F5E9" stroke="#388E3C" stroke-width="2"/>
+  <text x="310" y="85" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Education</text>
+  <text x="310" y="115" font-family="Arial" font-size="12" text-anchor="middle">• Virtual Teachers</text>
+  <text x="310" y="140" font-family="Arial" font-size="12" text-anchor="middle">• Historical Figures</text>
+  <text x="310" y="165" font-family="Arial" font-size="12" text-anchor="middle">• Language Learning</text>
   
   <!-- Healthcare -->
-  <g class="expand delayed3 float" transform="translate(150, 350) scale(0.8)">
-    <use href="#healthcare-icon" width="100" height="100"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#2ecc71" text-anchor="middle" font-weight="bold">Virtual Doctors</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#2ecc71" text-anchor="middle" font-weight="bold">Therapy Assistants</text>
-  </g>
+  <rect x="410" y="60" width="160" height="140" rx="5" fill="#FFF3E0" stroke="#F57C00" stroke-width="2"/>
+  <text x="490" y="85" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Healthcare</text>
+  <text x="490" y="115" font-family="Arial" font-size="12" text-anchor="middle">• Virtual Doctors</text>
+  <text x="490" y="140" font-family="Arial" font-size="12" text-anchor="middle">• Mental Health</text>
+  <text x="490" y="165" font-family="Arial" font-size="12" text-anchor="middle">• Health Coaches</text>
   
   <!-- Customer Service -->
-  <g class="expand delayed4 float" transform="translate(300, 480) scale(0.8)">
-    <use href="#customer-service-icon" width="100" height="100"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#9b59b6" text-anchor="middle" font-weight="bold">Virtual Assistants</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#9b59b6" text-anchor="middle" font-weight="bold">Shopping Advisors</text>
-  </g>
+  <rect x="590" y="60" width="160" height="140" rx="5" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2"/>
+  <text x="670" y="85" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Customer Service</text>
+  <text x="670" y="115" font-family="Arial" font-size="12" text-anchor="middle">• Virtual Assistants</text>
+  <text x="670" y="140" font-family="Arial" font-size="12" text-anchor="middle">• Shopping Advisors</text>
+  <text x="670" y="165" font-family="Arial" font-size="12" text-anchor="middle">• Technical Support</text>
   
-  <!-- Financial Services -->
-  <g class="expand delayed5 float" transform="translate(500, 480) scale(0.8)">
-    <use href="#financial-icon" width="100" height="100"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#f39c12" text-anchor="middle" font-weight="bold">Financial Advisors</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#f39c12" text-anchor="middle" font-weight="bold">Asset Managers</text>
-  </g>
+  <!-- Financial -->
+  <rect x="140" y="220" width="160" height="140" rx="5" fill="#E0F7FA" stroke="#00ACC1" stroke-width="2"/>
+  <text x="220" y="245" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Financial</text>
+  <text x="220" y="275" font-family="Arial" font-size="12" text-anchor="middle">• Financial Advisors</text>
+  <text x="220" y="300" font-family="Arial" font-size="12" text-anchor="middle">• Asset Management</text>
+  <text x="220" y="325" font-family="Arial" font-size="12" text-anchor="middle">• Fraud Detection</text>
   
   <!-- Tourism -->
-  <g class="expand delayed3 float" transform="translate(650, 350) scale(0.8)">
-    <use href="#tourism-icon" width="100" height="100"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#1abc9c" text-anchor="middle" font-weight="bold">Travel Guides</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#1abc9c" text-anchor="middle" font-weight="bold">Cultural Interpreters</text>
-  </g>
-  
-  <!-- Research & Innovation -->
-  <g class="expand delayed2 float" transform="translate(600, 170) scale(0.8)">
-    <circle cx="50" cy="50" r="45" fill="#7f8c8d"/>
-    <text x="50" y="35" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">RESEARCH &</text>
-    <text x="50" y="45" font-family="Arial" font-size="10" fill="white" text-anchor="middle" font-weight="bold">INNOVATION</text>
-    <path d="M30,65 L45,60 L60,70 L75,55" fill="none" stroke="white" stroke-width="3"/>
-    <circle cx="30" cy="65" r="3" fill="white"/>
-    <circle cx="45" cy="60" r="3" fill="white"/>
-    <circle cx="60" cy="70" r="3" fill="white"/>
-    <circle cx="75" cy="55" r="3" fill="white"/>
-    <text x="50" y="120" font-family="Arial" font-size="12" fill="#7f8c8d" text-anchor="middle" font-weight="bold">Research Assistants</text>
-    <text x="50" y="140" font-family="Arial" font-size="12" fill="#7f8c8d" text-anchor="middle" font-weight="bold">Data Analysts</text>
-  </g>
-  
-  <!-- Connecting Lines -->
-  <line x1="400" y1="200" x2="400" y2="220" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn"/>
-  <line x1="292" y1="219" x2="320" y2="240" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn delayed1"/>
-  <line x1="214" y1="358" x2="320" y2="300" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn delayed2"/>
-  <line x1="344" y1="428" x2="370" y2="380" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn delayed3"/>
-  <line x1="508" y1="428" x2="430" y2="380" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn delayed4"/>
-  <line x1="586" y1="358" x2="480" y2="300" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn delayed2"/>
-  <line x1="508" y1="219" x2="480" y2="240" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" class="fadeIn delayed1"/>
-  
-  <!-- Future Applications Section -->
-  <rect x="20" y="540" width="760" height="40" rx="5" ry="5" fill="#ecf0f1" class="fadeIn" style="animation-delay: 4s;"/>
-  <text x="400" y="565" font-family="Arial" font-size="16" fill="#34495e" text-anchor="middle" font-weight="bold" class="fadeIn" style="animation-delay: 4s;">Future Applications: Smart Homes, Autonomous Vehicles, Space Exploration, Industrial Training</text>
+  <rect x="500" y="220" width="160" height="140" rx="5" fill="#F9FBE7" stroke="#9E9D24" stroke-width="2"/>
+  <text x="580" y="245" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Tourism</text>
+  <text x="580" y="275" font-family="Arial" font-size="12" text-anchor="middle">• Virtual Guides</text>
+  <text x="580" y="300" font-family="Arial" font-size="12" text-anchor="middle">• Cultural Interpreters</text>
+  <text x="580" y="325" font-family="Arial" font-size="12" text-anchor="middle">• Travel Planners</text>
 </svg>
