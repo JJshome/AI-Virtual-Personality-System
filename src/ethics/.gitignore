@@ -1,0 +1,27 @@
+# Ethics module .gitignore
+
+# User consent records
+data/consent.json
+data/test_consent.json
+
+# Blockchain data
+data/blockchain.json
+
+# Authentication keys
+data/*.key
+data/*.pem
+
+# Encryption keys
+data/keys/
+
+# Log files
+*.log
+
+# Cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment variables
+.env
