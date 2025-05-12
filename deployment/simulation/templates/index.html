@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Personality Simulation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #9b59b6;
+            --background-color: #f8f9fa;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --entertainment-color: #e74c3c;
+            --education-color: #3498db;
+            --healthcare-color: #2ecc71;
+            --customer-service-color: #9b59b6;
+            --financial-color: #f39c12;
+            --tourism-color: #1abc9c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            padding-top: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .personality-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .personality-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .chat-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            height: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-color);
+            border-radius: 10px;
+        }
+        
+        .message {
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            position: relative;
+        }
+        
+        .user-message {
+            background-color: var(--primary-color);
+            color: white;
+            margin-left: auto;
+        }
+        
+        .bot-message {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            margin-right: auto;
+        }
+        
+        .emotion-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .emotion-display {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+        }
+        
+        .emotion-bar {
+            height: 20px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        .emotion-value {
+            height: 100%;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        
+        .happiness { background-color: #f1c40f; }
+        .sadness { background-color: #3498db; }
+        .anger { background-color: #e74c3c; }
+        .fear { background-color: #8e44ad; }
+        .surprise { background-color: #1abc9c; }
+        .interest { background-color: #2ecc71; }
+        
+        .personality-controls {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .domain-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .domain-entertainment { background-color: var(--entertainment-color); }
+        .domain-education { background-color: var(--education-color); }
+        .domain-healthcare { background-color: var(--healthcare-color); }
+        .domain-customer-service { background-color: var(--customer-service-color); }
+        .domain-financial { background-color: var(--financial-color); }
+        .domain-tourism { background-color: var(--tourism-color); }
+        
+        .trait-display {
+            margin-top: 15px;
+        }
+        
+        .trait-bar {
+            height: 10px;
+            margin-bottom: 15px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+        
+        .trait-value {
+            height: 100%;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+        }
+        
+        #chat-form {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--light-color);
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="text-center">Virtual Personality Simulation</h1>
+            <p class="text-center">Interact with AI-based virtual personalities across different domains</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="personality-controls">
+                    <h3>Select Personality</h3>
+                    <div class="mb-3">
+                        <label for="domain-select" class="form-label">Domain:</label>
+                        <select id="domain-select" class="form-control">
+                            <option value="all">All Domains</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="education">Education</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="customer_service">Customer Service</option>
+                            <option value="financial">Financial Services</option>
+                            <option value="tourism">Tourism</option>
+                        </select>
+                    </div>
+                    
+                    <div id="personalities-container">
+                        <!-- Personalities will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="personality-card" id="active-personality" style="display: none;">
+                    <h3>Active Personality</h3>
+                    <h4 id="personality-name">Not Selected</h4>
+                    <span id="personality-domain" class="domain-badge">Domain</span>
+                    
+                    <div class="trait-display">
+                        <h5>Personality Traits</h5>
+                        <div id="personality-traits">
+                            <!-- Traits will be displayed here -->
+                        </div>
+                    </div>
+                    
+                    <div class="emotion-display">
+                        <h5>Current Emotional State</h5>
+                        <div id="emotion-container">
+                            <!-- Emotions will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="bot-message message">
+                            Hello! I'm a virtual personality assistant. Please select a personality from the left panel to start interacting.
+                        </div>
+                    </div>
+                    
+                    <form id="chat-form">
+                        <input type="text" id="user-input" placeholder="Type your message..." disabled>
+                        <button type="submit" id="send-button" disabled>Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <div class="card">
+                <div class="card-header">
+                    Simulation Controls
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="response-latency" class="form-label">Response Latency (s):</label>
+                                <input type="range" class="form-range" id="response-latency" min="0" max="2" step="0.1" value="0.2">
+                                <span id="latency-value">0.2</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="emotion-sensitivity" class="form-label">Emotion Sensitivity:</label>
+                                <input type="range" class="form-range" id="emotion-sensitivity" min="0" max="1" step="0.1" value="0.7">
+                                <span id="sensitivity-value">0.7</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <button id="reset-button" class="btn btn-secondary w-100">Reset Simulation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables
+        let personalities = {};
+        let activePersonality = null;
+        let sessionId = null;
+        
+        // DOM elements
+        const domainSelect = document.getElementById('domain-select');
+        const personalitiesContainer = document.getElementById('personalities-container');
+        const activePersonalityCard = document.getElementById('active-personality');
+        const personalityName = document.getElementById('personality-name');
+        const personalityDomain = document.getElementById('personality-domain');
+        const personalityTraits = document.getElementById('personality-traits');
+        const emotionContainer = document.getElementById('emotion-container');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const resetButton = document.getElementById('reset-button');
+        const responseLatency = document.getElementById('response-latency');
+        const latencyValue = document.getElementById('latency-value');
+        const emotionSensitivity = document.getElementById('emotion-sensitivity');
+        const sensitivityValue = document.getElementById('sensitivity-value');
+        
+        // Initialize the simulation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load personalities
+            fetchPersonalities();
+            
+            // Set up event listeners
+            domainSelect.addEventListener('change', filterPersonalities);
+            chatForm.addEventListener('submit', sendMessage);
+            resetButton.addEventListener('click', resetSimulation);
+            responseLatency.addEventListener('input', updateLatency);
+            emotionSensitivity.addEventListener('input', updateSensitivity);
+        });
+        
+        // Fetch available personalities from the server
+        function fetchPersonalities() {
+            // In a real implementation, this would be an API call
+            // For simulation, we'll create mock data
+            personalities = {
+                'entertainment_personality_1': {
+                    'id': 'entertainment_personality_1',
+                    'name': 'Virtual Celebrity',
+                    'domain': 'entertainment',
+                    'traits': {
+                        'extroversion': 0.8,
+                        'creativity': 0.9,
+                        'humor': 0.85,
+                        'confidence': 0.9,
+                        'empathy': 0.6
+                    }
+                },
+                'education_personality_1': {
+                    'id': 'education_personality_1',
+                    'name': 'Virtual Teacher',
+                    'domain': 'education',
+                    'traits': {
+                        'knowledge': 0.95,
+                        'patience': 0.9,
+                        'clarity': 0.85,
+                        'empathy': 0.8,
+                        'adaptability': 0.7
+                    }
+                },
+                'healthcare_personality_1': {
+                    'id': 'healthcare_personality_1',
+                    'name': 'Virtual Doctor',
+                    'domain': 'healthcare',
+                    'traits': {
+                        'empathy': 0.95,
+                        'knowledge': 0.9,
+                        'calmness': 0.85,
+                        'trustworthiness': 0.9,
+                        'attentiveness': 0.8
+                    }
+                },
+                'customer_service_personality_1': {
+                    'id': 'customer_service_personality_1',
+                    'name': 'Virtual Assistant',
+                    'domain': 'customer_service',
+                    'traits': {
+                        'helpfulness': 0.9,
+                        'patience': 0.85,
+                        'efficiency': 0.8,
+                        'friendliness': 0.9,
+                        'knowledge': 0.75
+                    }
+                },
+                'financial_personality_1': {
+                    'id': 'financial_personality_1',
+                    'name': 'Financial Advisor',
+                    'domain': 'financial',
+                    'traits': {
+                        'analytical': 0.95,
+                        'trustworthiness': 0.9,
+                        'knowledge': 0.85,
+                        'clarity': 0.8,
+                        'patience': 0.7
+                    }
+                },
+                'tourism_personality_1': {
+                    'id': 'tourism_personality_1',
+                    'name': 'Travel Guide',
+                    'domain': 'tourism',
+                    'traits': {
+                        'enthusiasm': 0.9,
+                        'knowledge': 0.85,
+                        'adaptability': 0.8,
+                        'cultural_awareness': 0.9,
+                        'friendliness': 0.85
+                    }
+                }
+            };
+            
+            displayPersonalities();
+        }
+        
+        // Display available personalities
+        function displayPersonalities() {
+            personalitiesContainer.innerHTML = '';
+            
+            const selectedDomain = domainSelect.value;
+            
+            Object.values(personalities).forEach(personality => {
+                if (selectedDomain === 'all' || personality.domain === selectedDomain) {
+                    const card = document.createElement('div');
+                    card.className = 'personality-card';
+                    card.dataset.id = personality.id;
+                    
+                    const domainClass = `domain-${personality.domain.replace('_', '-')}`;
+                    
+                    card.innerHTML = `
+                        <h4>${personality.name}</h4>
+                        <span class="domain-badge ${domainClass}">${formatDomain(personality.domain)}</span>
+                        <p class="mt-2">Click to activate this personality</p>
+                    `;
+                    
+                    card.addEventListener('click', () => selectPersonality(personality.id));
+                    
+                    personalitiesContainer.appendChild(card);
+                }
+            });
+        }
+        
+        // Format domain name for display
+        function formatDomain(domain) {
+            return domain.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+        
+        // Filter personalities by domain
+        function filterPersonalities() {
+            displayPersonalities();
+        }
+        
+        // Select and activate a personality
+        function selectPersonality(personalityId) {
+            if (personalities[personalityId]) {
+                activePersonality = personalities[personalityId];
+                
+                // Update UI
+                personalityName.textContent = activePersonality.name;
+                personalityDomain.textContent = formatDomain(activePersonality.domain);
+                personalityDomain.className = `domain-badge domain-${activePersonality.domain.replace('_', '-')}`;
+                
+                // Display traits
+                personalityTraits.innerHTML = '';
+                Object.entries(activePersonality.traits).forEach(([trait, value]) => {
+                    const traitElement = document.createElement('div');
+                    traitElement.innerHTML = `
+                        <div class="d-flex justify-content-between">
+                            <small>${formatDomain(trait)}</small>
+                            <small>${Math.round(value * 100)}%</small>
+                        </div>
+                        <div class="trait-bar">
+                            <div class="trait-value" style="width: ${value * 100}%"></div>
+                        </div>
+                    `;
+                    personalityTraits.appendChild(traitElement);
+                });
+                
+                // Display initial emotions
+                const initialEmotions = {
+                    'happiness': 0.5,
+                    'sadness': 0.1,
+                    'anger': 0.0,
+                    'fear': 0.0,
+                    'surprise': 0.1,
+                    'interest': 0.8
+                };
+                updateEmotionDisplay(initialEmotions);
+                
+                // Show active personality card
+                activePersonalityCard.style.display = 'block';
+                
+                // Enable chat
+                userInput.disabled = false;
+                sendButton.disabled = false;
+                
+                // Clear chat and add welcome message
+                chatMessages.innerHTML = '';
+                addBotMessage(`Hello! I'm ${activePersonality.name}, your virtual ${activePersonality.domain.replace('_', ' ')} assistant. How can I help you today?`);
+                
+                // Create a session
+                createSession(personalityId);
+            }
+        }
+        
+        // Create a new session
+        function createSession(personalityId) {
+            // In a real implementation, this would be an API call
+            // For simulation, we'll generate a mock session ID
+            sessionId = `session_${Date.now()}`;
+            console.log(`Created session ${sessionId} with ${personalityId}`);
+        }
+        
+        // Update emotion display
+        function updateEmotionDisplay(emotions) {
+            emotionContainer.innerHTML = '';
+            
+            Object.entries(emotions).forEach(([emotion, value]) => {
+                const emotionElement = document.createElement('div');
+                emotionElement.innerHTML = `
+                    <div class="d-flex justify-content-between">
+                        <small>${emotion.charAt(0).toUpperCase() + emotion.slice(1)}</small>
+                        <small>${Math.round(value * 100)}%</small>
+                    </div>
+                    <div class="emotion-bar">
+                        <div class="emotion-value ${emotion}" style="width: ${value * 100}%"></div>
+                    </div>
+                `;
+                emotionContainer.appendChild(emotionElement);
+            });
+        }
+        
+        // Send a message
+        function sendMessage(event) {
+            event.preventDefault();
+            
+            const message = userInput.value.trim();
+            if (!message || !activePersonality || !sessionId) return;
+            
+            // Add user message to chat
+            addUserMessage(message);
+            
+            // Clear input
+            userInput.value = '';
+            
+            // Simulate processing
+            setTimeout(() => {
+                processMessage(message);
+            }, parseFloat(responseLatency.value) * 1000);
+        }
+        
+        // Process a message and get a response
+        function processMessage(message) {
+            // In a real implementation, this would be an API call
+            // For simulation, we'll generate appropriate responses based on the domain
+            
+            let response = '';
+            let emotions = {};
+            
+            switch(activePersonality.domain) {
+                case 'entertainment':
+                    if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+                        response = "Hi there! I'm so excited to chat with you today! What would you like to talk about?";
+                        emotions = {
+                            'happiness': 0.8,
+                            'sadness': 0.1,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.2,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('how are you')) {
+                        response = "I'm feeling fantastic today! Thanks for asking. I just finished a virtual performance that went really well!";
+                        emotions = {
+                            'happiness': 0.9,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.1,
+                            'interest': 0.7
+                        };
+                    } else if (message.toLowerCase().includes('music') || message.toLowerCase().includes('song')) {
+                        response = "I love creating music that connects with people emotionally. My latest track explores themes of digital connection and human experience.";
+                        emotions = {
+                            'happiness': 0.7,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('movie') || message.toLowerCase().includes('film')) {
+                        response = "I'm passionate about storytelling through film. I believe that movies can transport us to new worlds and help us understand different perspectives.";
+                        emotions = {
+                            'happiness': 0.6,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    } else {
+                        response = "That's an interesting topic! As someone in the entertainment world, I'm always looking for creative inspiration. Would you like to hear about my latest project?";
+                        emotions = {
+                            'happiness': 0.6,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.3,
+                            'interest': 0.8
+                        };
+                    }
+                    break;
+                    
+                case 'education':
+                    if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+                        response = "Hello! I'm here to help you learn. What subject would you like to explore today?";
+                        emotions = {
+                            'happiness': 0.6,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('math') || message.toLowerCase().includes('mathematics')) {
+                        response = "Mathematics is a beautiful language that helps us understand the patterns of our universe. Would you like to focus on a specific topic within mathematics?";
+                        emotions = {
+                            'happiness': 0.5,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('history')) {
+                        response = "History gives us context for our present and guidance for our future. I can help you explore different historical periods and understand how they've shaped our world.";
+                        emotions = {
+                            'happiness': 0.5,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('science')) {
+                        response = "Science is all about curiosity and discovery! From physics to biology, scientific inquiry helps us understand the natural world. What aspect of science interests you most?";
+                        emotions = {
+                            'happiness': 0.6,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.1,
+                            'interest': 0.9
+                        };
+                    } else {
+                        response = "Learning is a lifelong journey. I'm designed to adapt to your learning style and help you master new concepts. What specific questions do you have about this topic?";
+                        emotions = {
+                            'happiness': 0.5,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.1,
+                            'interest': 0.9
+                        };
+                    }
+                    break;
+                
+                case 'healthcare':
+                    if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+                        response = "Hello. I'm here to discuss your health concerns in a confidential and supportive environment. How can I assist you today?";
+                        emotions = {
+                            'happiness': 0.4,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    } else if (message.toLowerCase().includes('stress') || message.toLowerCase().includes('anxiety')) {
+                        response = "Stress and anxiety are common experiences. Let's discuss some evidence-based strategies that might help you manage these feelings. Would you like to tell me more about what you're experiencing?";
+                        emotions = {
+                            'happiness': 0.2,
+                            'sadness': 0.2,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('sleep')) {
+                        response = "Quality sleep is essential for physical and mental health. There are several approaches we could discuss to improve your sleep patterns. Could you tell me more about your current sleep routine?";
+                        emotions = {
+                            'happiness': 0.3,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    } else {
+                        response = "I'm here to provide health information and support based on current medical knowledge. Remember that I'm designed to complement, not replace, the care provided by human healthcare professionals.";
+                        emotions = {
+                            'happiness': 0.3,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    }
+                    break;
+                
+                case 'customer_service':
+                    if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
+                        response = "Hello! Welcome to our customer service. I'm here to help you with any questions or concerns. How may I assist you today?";
+                        emotions = {
+                            'happiness': 0.7,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    } else if (message.toLowerCase().includes('problem') || message.toLowerCase().includes('issue') || message.toLowerCase().includes('help')) {
+                        response = "I'm sorry to hear you're experiencing an issue. I'm here to help resolve it as quickly as possible. Could you please provide more details about the problem you're facing?";
+                        emotions = {
+                            'happiness': 0.3,
+                            'sadness': 0.2,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.9
+                        };
+                    } else if (message.toLowerCase().includes('order') || message.toLowerCase().includes('purchase')) {
+                        response = "I'd be happy to help with your order. To better assist you, could you please provide your order number or the email address associated with your account?";
+                        emotions = {
+                            'happiness': 0.6,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    } else {
+                        response = "Thank you for reaching out to customer service. I'm here to ensure you have an excellent experience. How else may I assist you today?";
+                        emotions = {
+                            'happiness': 0.7,
+                            'sadness': 0.0,
+                            'anger': 0.0,
+                            'fear': 0.0,
+                            'surprise': 0.0,
+                            'interest': 0.8
+                        };
+                    }
+                    break;
+                
+                default:
+                    response = "I'm here to assist you. Could you tell me more about what you're looking for today?";
+                    emotions = {
+                        'happiness': 0.5,
+                        'sadness': 0.0,
+                        'anger': 0.0,
+                        'fear': 0.0,
+                        'surprise': 0.1,
+                        'interest': 0.8
+                    };
+            }
+            
+            // Add bot message
+            addBotMessage(response);
+            
+            // Update emotion display
+            updateEmotionDisplay(emotions);
+        }
+        
+        // Add a user message to the chat
+        function addUserMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'user-message message';
+            messageElement.textContent = message;
+            
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Add a bot message to the chat
+        function addBotMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'bot-message message';
+            messageElement.textContent = message;
+            
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Update response latency
+        function updateLatency() {
+            latencyValue.textContent = responseLatency.value;
+        }
+        
+        // Update emotion sensitivity
+        function updateSensitivity() {
+            sensitivityValue.textContent = emotionSensitivity.value;
+        }
+        
+        // Reset the simulation
+        function resetSimulation() {
+            // Clear active personality
+            activePersonality = null;
+            sessionId = null;
+            
+            // Reset UI
+            activePersonalityCard.style.display = 'none';
+            chatMessages.innerHTML = '<div class="bot-message message">Hello! I\'m a virtual personality assistant. Please select a personality from the left panel to start interacting.</div>';
+            
+            // Disable chat
+            userInput.disabled = true;
+            sendButton.disabled = true;
+            userInput.value = '';
+            
+            // Reset controls
+            responseLatency.value = 0.2;
+            latencyValue.textContent = '0.2';
+            emotionSensitivity.value = 0.7;
+            sensitivityValue.textContent = '0.7';
+        }
+    </script>
+</body>
+</html>
