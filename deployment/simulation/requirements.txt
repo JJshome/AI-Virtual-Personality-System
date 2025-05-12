@@ -1,0 +1,29 @@
+# Requirements for AI-based Virtual Personality System Simulation
+
+# Core Dependencies
+numpy==1.24.3
+torch==2.0.1
+flask==2.3.2
+flask-cors==4.0.0
+
+# Data Processing
+pandas==2.0.2
+scikit-learn==1.2.2
+
+# Natural Language Processing
+transformers==4.30.1
+sentence-transformers==2.2.2
+
+# Audio Processing (for voice interaction)
+librosa==0.10.0
+soundfile==0.12.1
+
+# Image Processing (for visual interaction)
+opencv-python==4.7.0.72
+pillow==9.5.0
+
+# Utilities
+tqdm==4.65.0
+python-dotenv==1.0.0
+requests==2.31.0
+pyyaml==6.0
