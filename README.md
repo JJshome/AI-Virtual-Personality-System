@@ -27,6 +27,20 @@ The system consists of six main components:
 5. **Multi-Platform Support Module**: Provides optimized interfaces for various platforms including VR/AR, holograms, and mobile applications.
 6. **Continuous Learning and Improvement Module**: Utilizes federated learning for ongoing performance enhancement while maintaining privacy.
 
+![System Architecture](doc/images/system_architecture.svg)
+
+## Data Flow
+
+Our system processes data through multiple stages, from collection to response generation, ensuring efficient and secure handling of information at every step.
+
+![Data Flow](doc/images/data_flow.svg)
+
+## Interaction Management
+
+The interaction model enables natural, context-aware conversations between users and virtual personalities, with real-time emotion analysis and multimodal communication.
+
+![Interaction Model](doc/images/interaction_model.svg)
+
 ## Ethics and Security Module
 
 The Ethics and Security Management Module ensures that virtual personalities operate ethically and securely, protecting user privacy, preventing misuse, and adhering to ethical guidelines. This module includes:
@@ -41,6 +55,10 @@ The Ethics and Security Management Module ensures that virtual personalities ope
 The Ethics and Security Module is designed to be domain-specific, with tailored guidelines and protections for entertainment, education, healthcare, customer service, financial services, and tourism applications.
 
 ## Applications
+
+Our technology can be applied across multiple domains, providing innovative solutions and enhanced user experiences in various industries.
+
+![Application Domains](doc/images/application_domains.svg)
 
 ### Entertainment
 - Virtual celebrities and influencers
@@ -102,11 +120,6 @@ The implementation leverages:
     ├── cloud/          # Cloud deployment configurations
     └── simulation/     # Simulation environment
 ```
-
-![System Architecture](doc/images/system_architecture.svg)
-![Data Flow](doc/images/data_flow.svg)
-![Interaction Model](doc/images/interaction_model.svg)
-![Application Domains](doc/images/application_domains.svg)
 
 ## Getting Started
 
