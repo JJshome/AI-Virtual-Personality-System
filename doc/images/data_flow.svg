@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3498db;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <style type="text/css">
+      @keyframes dataFlow {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.9; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes cloud {
+        0% { transform: translateX(0px); }
+        50% { transform: translateX(10px); }
+        100% { transform: translateX(0px); }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .data-flow {
+        stroke-dasharray: 10, 5;
+        animation: dataFlow 30s infinite linear;
+      }
+      .pulse {
+        animation: pulse 4s infinite ease-in-out;
+      }
+      .cloud {
+        animation: cloud 8s infinite ease-in-out;
+      }
+      .appear {
+        animation: fadeIn 1s;
+      }
+      .delayed1 {
+        animation-delay: 0.5s;
+      }
+      .delayed2 {
+        animation-delay: 1s;
+      }
+      .delayed3 {
+        animation-delay: 1.5s;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="10" ry="10"/>
+  <rect width="780" height="50" x="10" y="10" fill="url(#headerGradient)" rx="8" ry="8"/>
+  <text x="400" y="45" font-family="Arial" font-size="24" fill="white" text-anchor="middle" font-weight="bold">Data Flow in Virtual Personality System</text>
+  
+  <!-- User Device -->
+  <g class="appear">
+    <rect x="100" y="100" width="120" height="80" rx="10" ry="10" fill="#3498db" filter="url(#shadow)" class="pulse"/>
+    <text x="160" y="150" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">User Device</text>
+  </g>
+  
+  <!-- Edge AI Processing -->
+  <g class="appear delayed1">
+    <rect x="340" y="100" width="120" height="80" rx="10" ry="10" fill="#2ecc71" filter="url(#shadow)" class="pulse"/>
+    <text x="400" y="140" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Edge AI</text>
+    <text x="400" y="160" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Processing</text>
+  </g>
+  
+  <!-- Cloud Infrastructure -->
+  <g class="cloud appear delayed1">
+    <path d="M580 100 C580 90, 590 80, 600 80 C610 80, 620 85, 630 85 C640 85, 650 75, 660 75 C670 75, 680 80, 690 90 C700 70, 730 80, 730 100 C730 120, 700 130, 690 130 C680 140, 670 145, 660 145 C650 145, 640 135, 630 135 C620 135, 610 140, 600 140 C590 140, 580 130, 580 120 Z" fill="#9b59b6" filter="url(#shadow)"/>
+    <text x="655" y="120" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Cloud AI</text>
+  </g>
+  
+  <!-- Data Collection -->
+  <g class="appear delayed2">
+    <rect x="100" y="250" width="120" height="80" rx="10" ry="10" fill="#e74c3c" filter="url(#shadow)" class="pulse"/>
+    <text x="160" y="290" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Data</text>
+    <text x="160" y="310" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Collection</text>
+  </g>
+  
+  <!-- Data Analysis -->
+  <g class="appear delayed2">
+    <rect x="340" y="250" width="120" height="80" rx="10" ry="10" fill="#f39c12" filter="url(#shadow)" class="pulse"/>
+    <text x="400" y="290" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Data</text>
+    <text x="400" y="310" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Analysis</text>
+  </g>
+  
+  <!-- Model Training -->
+  <g class="appear delayed3">
+    <rect x="580" y="250" width="120" height="80" rx="10" ry="10" fill="#1abc9c" filter="url(#shadow)" class="pulse"/>
+    <text x="640" y="290" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Model</text>
+    <text x="640" y="310" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Training</text>
+  </g>
+  
+  <!-- Personality Generation -->
+  <g class="appear delayed3">
+    <rect x="340" y="400" width="120" height="80" rx="10" ry="10" fill="#8e44ad" filter="url(#shadow)" class="pulse"/>
+    <text x="400" y="430" font-family="Arial" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Personality</text>
+    <text x="400" y="450" font-family="Arial" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Generation</text>
+  </g>
+  
+  <!-- Interface -->
+  <g class="appear delayed3">
+    <rect x="100" y="400" width="120" height="80" rx="10" ry="10" fill="#3498db" filter="url(#shadow)" class="pulse"/>
+    <text x="160" y="440" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">User</text>
+    <text x="160" y="460" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Interface</text>
+  </g>
+  
+  <!-- Ethics & Security Module -->
+  <g class="appear delayed3">
+    <rect x="580" y="400" width="120" height="80" rx="10" ry="10" fill="#c0392b" filter="url(#shadow)" class="pulse"/>
+    <text x="640" y="430" font-family="Arial" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Ethics &amp;</text>
+    <text x="640" y="450" font-family="Arial" font-size="14" fill="white" text-anchor="middle" font-weight="bold">Security</text>
+  </g>
+  
+  <!-- Feedback Loop -->
+  <g class="appear delayed3">
+    <path d="M340 500 C280 540, 220 540, 160 490" fill="none" stroke="#2c3e50" stroke-width="3" stroke-linecap="round" class="data-flow"/>
+    <text x="240" y="540" font-family="Arial" font-size="14" fill="#2c3e50" text-anchor="middle" font-weight="bold">Feedback Loop</text>
+  </g>
+  
+  <!-- Data Flow Lines -->
+  <path d="M220 140 L 340 140" fill="none" stroke="#3498db" stroke-width="3" class="data-flow"/>
+  <path d="M460 140 L 580 140" fill="none" stroke="#2ecc71" stroke-width="3" class="data-flow"/>
+  <path d="M160 180 L 160 250" fill="none" stroke="#e74c3c" stroke-width="3" class="data-flow"/>
+  <path d="M220 290 L 340 290" fill="none" stroke="#f39c12" stroke-width="3" class="data-flow"/>
+  <path d="M460 290 L 580 290" fill="none" stroke="#1abc9c" stroke-width="3" class="data-flow"/>
+  <path d="M640 180 L 640 250" fill="none" stroke="#9b59b6" stroke-width="3" class="data-flow"/>
+  <path d="M640 330 L 640 400" fill="none" stroke="#8e44ad" stroke-width="3" class="data-flow"/>
+  <path d="M580 440 L 460 440" fill="none" stroke="#c0392b" stroke-width="3" class="data-flow"/>
+  <path d="M340 440 L 220 440" fill="none" stroke="#3498db" stroke-width="3" class="data-flow"/>
+  
+  <!-- Data Types Annotations -->
+  <g class="appear">
+    <rect x="230" y="120" width="100" height="25" rx="5" ry="5" fill="white" stroke="#3498db" stroke-width="1"/>
+    <text x="280" y="138" font-family="Arial" font-size="12" fill="#3498db" text-anchor="middle">User Input</text>
+    
+    <rect x="470" y="120" width="100" height="25" rx="5" ry="5" fill="white" stroke="#2ecc71" stroke-width="1"/>
+    <text x="520" y="138" font-family="Arial" font-size="12" fill="#2ecc71" text-anchor="middle">Processed Data</text>
+    
+    <rect x="120" y="200" width="80" height="25" rx="5" ry="5" fill="white" stroke="#e74c3c" stroke-width="1"/>
+    <text x="160" y="218" font-family="Arial" font-size="12" fill="#e74c3c" text-anchor="middle">Raw Data</text>
+    
+    <rect x="230" y="270" width="100" height="25" rx="5" ry="5" fill="white" stroke="#f39c12" stroke-width="1"/>
+    <text x="280" y="288" font-family="Arial" font-size="12" fill="#f39c12" text-anchor="middle">Structured Data</text>
+    
+    <rect x="470" y="270" width="100" height="25" rx="5" ry="5" fill="white" stroke="#1abc9c" stroke-width="1"/>
+    <text x="520" y="288" font-family="Arial" font-size="12" fill="#1abc9c" text-anchor="middle">Training Data</text>
+    
+    <rect x="600" y="200" width="80" height="25" rx="5" ry="5" fill="white" stroke="#9b59b6" stroke-width="1"/>
+    <text x="640" y="218" font-family="Arial" font-size="12" fill="#9b59b6" text-anchor="middle">AI Models</text>
+    
+    <rect x="600" y="350" width="80" height="25" rx="5" ry="5" fill="white" stroke="#8e44ad" stroke-width="1"/>
+    <text x="640" y="368" font-family="Arial" font-size="12" fill="#8e44ad" text-anchor="middle">AI Updates</text>
+    
+    <rect x="470" y="420" width="100" height="25" rx="5" ry="5" fill="white" stroke="#c0392b" stroke-width="1"/>
+    <text x="520" y="438" font-family="Arial" font-size="12" fill="#c0392b" text-anchor="middle">Secure Content</text>
+    
+    <rect x="230" y="420" width="100" height="25" rx="5" ry="5" fill="white" stroke="#3498db" stroke-width="1"/>
+    <text x="280" y="438" font-family="Arial" font-size="12" fill="#3498db" text-anchor="middle">Response Data</text>
+  </g>
+</svg>
