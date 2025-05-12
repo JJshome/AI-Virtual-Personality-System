@@ -5,11 +5,18 @@ This package provides components for ensuring that virtual personalities operate
 and securely, protecting user privacy, preventing misuse, and adhering to ethical guidelines.
 """
 
-from .manager import EthicsSecurityManager, ContentFilter, BlockchainVerifier, create_default_guidelines
+from .manager import EthicsSecurityManager, create_default_guidelines
+from .content_filter import ContentFilter, create_content_filter
+from .blockchain import BlockchainVerifier, create_blockchain_verifier
+from .consent import ConsentManager, create_consent_manager
 
 __all__ = [
     'EthicsSecurityManager',
     'ContentFilter',
     'BlockchainVerifier',
-    'create_default_guidelines'
+    'ConsentManager',
+    'create_default_guidelines',
+    'create_content_filter',
+    'create_blockchain_verifier',
+    'create_consent_manager'
 ]
